@@ -44,7 +44,9 @@ class _CreateAerState extends State<CreateAer> {
                       ),
                       backgroundColor: Colors.white,
                       minimumSize: const Size.fromHeight(50)),
-                  onPressed: () => print("hi"),
+                  onPressed: () {
+                    print(_description.text);
+                  },
                   child: const Text(
                     "Upload",
                     style: TextStyle(
