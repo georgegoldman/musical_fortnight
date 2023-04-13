@@ -1,7 +1,7 @@
 import 'package:aer_v2/src/domain/models/trash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-abstract class TrashRepository {
+abstract class ITrashRepository {
   Future<List<Trash>> getAll();
   Future<Trash?> getOne(DocumentReference id);
   Future<void> insert(Trash trash);
