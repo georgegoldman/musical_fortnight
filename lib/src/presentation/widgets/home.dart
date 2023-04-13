@@ -1,5 +1,4 @@
-import 'package:aer_v2/main.dart';
-import 'package:aer_v2/src/home/presentation/widgets/bottomAppBar.dart';
+import 'package:aer_v2/src/presentation/widgets/bottomAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
