@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CreateAer extends StatefulWidget {
@@ -9,6 +10,12 @@ class CreateAer extends StatefulWidget {
 
 class _CreateAerState extends State<CreateAer> {
   final TextEditingController _description = TextEditingController();
+  var db = FirebaseFirestore.instance;
+  final user = <String, dynamic>{
+    "firstname": "Ada",
+    "last": "Lovelace",
+    "born": 1815
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +52,9 @@ class _CreateAerState extends State<CreateAer> {
                       backgroundColor: Colors.white,
                       minimumSize: const Size.fromHeight(50)),
                   onPressed: () {
-                    print(_description.text);
+                    db.collection("users").add(user).then(
+                        (DocumentReference doc) =>
+                            print('DocumentSnapshot added with ID: ${doc.id}'));
                   },
                   child: const Text(
                     "Upload",
