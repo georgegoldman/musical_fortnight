@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "520330254266",
+    "project_id": "cleverdolphin-8fbd3",
+    "storage_bucket": "cleverdolphin-8fbd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520330254266:android:f13dd8e2f49fa7d328af83",
+        "android_client_info": {
+          "package_name": "com.example.aer_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520330254266-9g3488lhnaio2rijr1rjidjdmadi48o4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqG6NGpGmCHxiQPpAyBaT4OhnDkKt4Zws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520330254266-9g3488lhnaio2rijr1rjidjdmadi48o4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
