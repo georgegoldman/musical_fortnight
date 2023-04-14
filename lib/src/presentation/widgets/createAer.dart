@@ -59,7 +59,7 @@ class _CreateAerState extends State<CreateAer> {
                       minimumSize: const Size.fromHeight(50)),
                   onPressed: () {
                     TrashService().insert(
-                        Trash(description: 'uploading dirt').toFireStore());
+                        Trash(description: _description.text).toFireStore());
                   },
                   child: const Text(
                     "Upload",

@@ -25,10 +25,8 @@ class TrashRepository implements ITrashRepository {
   }
 
   @override
-  Future<void> insert(Map<String, dynamic> trash) {
-    Trash newTrash = _db.collection('user').add(trash);
-    print(newTrash);
-    throw UnimplementedError();
+  Future<void> insert(Map<String, dynamic> trash) async {
+    Trash newTrash = await _db.collection('trash').add(trash);
   }
 
   @override
