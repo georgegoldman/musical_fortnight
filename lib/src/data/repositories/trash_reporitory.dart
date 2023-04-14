@@ -27,7 +27,7 @@ class TrashRepository implements ITrashRepository {
 
   @override
   Future<void> insert(Trash trash) {
-    db.collection('user').doc('id').set(trash.toFireStore());
+    db.collection('user').add(trash.toFireStore());
     throw UnimplementedError();
   }
 
