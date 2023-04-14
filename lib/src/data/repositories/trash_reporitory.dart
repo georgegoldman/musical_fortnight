@@ -5,7 +5,7 @@ import 'package:aer_v2/src/domain/models/trash.dart';
 
 class TrashRepository implements ITrashRepository {
   FiresbaseDB db = FiresbaseDB();
-
+  
   TrashRepository();
 
   @override
