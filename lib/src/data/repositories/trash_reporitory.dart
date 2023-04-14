@@ -4,9 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:aer_v2/src/domain/models/trash.dart';
 
 class TrashRepository implements ITrashRepository {
-  FiresbaseDB db = FiresbaseDB();
-  
   TrashRepository();
+  final db = FiresbaseDB().initializeDB();
 
   @override
   Future<void> delete(DocumentReference<Object?> id) {
@@ -28,7 +27,7 @@ class TrashRepository implements ITrashRepository {
 
   @override
   Future<void> insert(Trash trash) {
-    // TODO: implement insert
+    db.collection('user').doc('id').set(trash.toFireStore());
     throw UnimplementedError();
   }
 
