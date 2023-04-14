@@ -11,9 +11,7 @@ class TrashController {
 
   Future<List<Trash>> getAllTrash() => _trashRepo.getAll();
 
-  Future<void> addTrash(Trash trash) => _trashRepo.insert(trash);
-
   Future<void> removeTrash(DocumentReference id) => _trashRepo.delete(id);
 
-  Future<void> insert(Trash trash) => _trashRepo.insert(trash);
+  Future<void> insert(Map<String, dynamic> trash) => _trashRepo.insert(trash);
 }

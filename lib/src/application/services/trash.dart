@@ -13,7 +13,7 @@ class TrashService {
     }
   }
 
-  Future<void> insert(Trash trash) async {
+  Future<void> insert(Map<String, dynamic> trash) async {
     try {
       final newTrash = await _trashController.insert(trash);
     } catch (e) {

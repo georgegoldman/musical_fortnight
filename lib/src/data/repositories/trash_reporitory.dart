@@ -1,4 +1,3 @@
-import 'package:aer_v2/src/data/data_sources/db.dart';
 import 'package:aer_v2/src/data/repositories/trash_interface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:aer_v2/src/domain/models/trash.dart';
@@ -26,14 +25,14 @@ class TrashRepository implements ITrashRepository {
   }
 
   @override
-  Future<void> insert(Trash trash) {
-    Trash newTrash = _db.collection('user').add(trash.toFireStore());
+  Future<void> insert(Map<String, dynamic> trash) {
+    Trash newTrash = _db.collection('user').add(trash);
     print(newTrash);
     throw UnimplementedError();
   }
 
   @override
-  Future<void> update(Trash trash) {
+  Future<void> update(Map<String, dynamic> trash) {
     // TODO: implement update
     throw UnimplementedError();
   }

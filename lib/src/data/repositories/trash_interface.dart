@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 abstract class ITrashRepository {
   Future<List<Trash>> getAll();
   Future<Trash?> getOne(DocumentReference id);
-  Future<void> insert(Trash trash);
-  Future<void> update(Trash trash);
+  Future<void> insert(Map<String, dynamic> trash);
+  Future<void> update(Map<String, dynamic> trash);
   Future<void> delete(DocumentReference id);
 }

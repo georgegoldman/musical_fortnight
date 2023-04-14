@@ -5,6 +5,8 @@ import 'package:aer_v2/src/presentation/controllers/trash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/models/trash.dart';
+
 class CreateAer extends StatefulWidget {
   const CreateAer({super.key});
 
@@ -56,7 +58,8 @@ class _CreateAerState extends State<CreateAer> {
                       backgroundColor: Colors.white,
                       minimumSize: const Size.fromHeight(50)),
                   onPressed: () {
-                    TrashService();
+                    TrashService().insert(
+                        Trash(description: 'uploading dirt').toFireStore());
                   },
                   child: const Text(
                     "Upload",
