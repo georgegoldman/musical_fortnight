@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:aer_v2/src/application/services/trash.dart';
+import 'package:aer_v2/src/presentation/controllers/trash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -54,9 +56,7 @@ class _CreateAerState extends State<CreateAer> {
                       backgroundColor: Colors.white,
                       minimumSize: const Size.fromHeight(50)),
                   onPressed: () {
-                    db.collection("users").add(user).then(
-                        (DocumentReference doc) =>
-                            print('DocumentSnapshot added with ID: ${doc.id}'));
+                    TrashService();
                   },
                   child: const Text(
                     "Upload",

@@ -14,4 +14,6 @@ class TrashController {
   Future<void> addTrash(Trash trash) => _trashRepo.insert(trash);
 
   Future<void> removeTrash(DocumentReference id) => _trashRepo.delete(id);
+
+  Future<void> insert(Trash trash) => _trashRepo.insert(trash);
 }
