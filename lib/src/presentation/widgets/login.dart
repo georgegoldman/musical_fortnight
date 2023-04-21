@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               "Login in to your Account",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: 16,
               ),
               textAlign: TextAlign.left,
             ),
@@ -64,11 +64,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               validator: (value) {
-                if ((value == null || value.isEmpty)) {
+                if ((_email.text != '' || _email.text.isNotEmpty) &&
+                    RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
+                        .hasMatch(_email.text)) {
                   return 'please fill in the field';
-                } else if (!(RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
-                    .hasMatch(value))) {
-                  return 'please enter valid email';
                 } else {
                   return null;
                 }
