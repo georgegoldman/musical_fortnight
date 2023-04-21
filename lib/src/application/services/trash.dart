@@ -15,10 +15,12 @@ class TrashService {
 
   Future<void> insert(Map<String, dynamic> trash) async {
     try {
-      final newTrash = await _trashController.insert(trash);
-      print("ok this is working");
+      final newTrash = await _trashController
+          .insert(trash)
+          .onError((error, stackTrace) => print(error));
     } catch (e) {
-      print(e);
+      print("ok this is working");
+      print(e.toString());
     }
   }
 }

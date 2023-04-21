@@ -26,7 +26,8 @@ class TrashRepository implements ITrashRepository {
 
   @override
   Future<void> insert(Map<String, dynamic> trash) async {
-    Trash newTrash = await _db.collection('trash').add(trash);
+    final docRef = _db
+    return await _db.collection('trash').add(trash);
   }
 
   @override
