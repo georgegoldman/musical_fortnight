@@ -29,7 +29,7 @@ class _SignupScreenState extends State<SignupScreen> {
         child: ListView(
           padding: EdgeInsets.symmetric(
               horizontal: 24,
-              vertical: MediaQuery.of(context).size.height * 0.05),
+              vertical: MediaQuery.of(context).size.height * 0.03),
           children: <Widget>[
             const Text(
               "ABS",

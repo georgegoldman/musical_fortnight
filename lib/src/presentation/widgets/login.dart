@@ -135,10 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
                               .hasMatch(_email.text.toString()))
                       ? () {
-                          if (_formKey.currentState!.validate()) {
-                            // ScaffoldMessenger.of(context).showSnackBar(
-                            //     const SnackBar(content: Text('Processing Data')));
-                          }
+                          print("loading");
                         }
                       : null,
                   child: const Text(
