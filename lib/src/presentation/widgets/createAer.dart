@@ -58,15 +58,18 @@ class _CreateAerState extends State<CreateAer> {
                       backgroundColor: Colors.white,
                       minimumSize: const Size.fromHeight(50)),
                   onPressed: () {
-                    TrashService().insert(
-                        Trash(description: _description.text).toFireStore());
+                    TrashService().insert(Trash(
+                            description: _description.text,
+                            disposer: "jknsu58789340%^%4skj")
+                        .toFireStore());
                   },
                   child: const Text(
                     "Upload",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: Colors.redAccent),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Colors.blueAccent,
+                    ),
                   ))
             ],
           ),

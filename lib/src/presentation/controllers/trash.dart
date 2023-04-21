@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TrashController {
   final TrashRepository _trashRepo =
-      TrashRepository(FiresbaseDB().initializeDB());
+      TrashRepository(db: FiresbaseDB().initializeDB());
 
   TrashController();
 
@@ -13,5 +13,5 @@ class TrashController {
 
   Future<void> removeTrash(DocumentReference id) => _trashRepo.delete(id);
 
-  Future<void> insert(Map<String, dynamic> trash) => _trashRepo.insert(trash);
+  Future<String> insert(Map<String, dynamic> trash) => _trashRepo.insert(trash);
 }

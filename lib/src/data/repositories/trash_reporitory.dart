@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:aer_v2/src/domain/models/trash.dart';
 
 class TrashRepository implements ITrashRepository {
-  final _db;
-  TrashRepository(this._db);
+  final FirebaseFirestore db;
+  TrashRepository({required this.db});
 
   @override
   Future<void> delete(DocumentReference<Object?> id) {
@@ -25,9 +25,10 @@ class TrashRepository implements ITrashRepository {
   }
 
   @override
-  Future<void> insert(Map<String, dynamic> trash) async {
-    final docRef = _db
-    return await _db.collection('trash').add(trash);
+  Future<String> insert(Map<String, dynamic> trash) async {
+    var x = await db.collection("trash").add(trash);
+
+    return x.id;
   }
 
   @override

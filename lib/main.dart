@@ -1,5 +1,7 @@
 import 'package:aer_v2/src/presentation/widgets/createAer.dart';
 import 'package:aer_v2/src/presentation/widgets/home.dart';
+import 'package:aer_v2/src/presentation/widgets/login.dart';
+import 'package:aer_v2/src/presentation/widgets/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -21,7 +23,10 @@ class Aer extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) {
-          return const Home();
+          return const LoginScreen();
+        },
+        '/signup': (BuildContext context) {
+          return const SignupScreen();
         },
         '/aer': (BuildContext context) {
           return const CreateAer();
