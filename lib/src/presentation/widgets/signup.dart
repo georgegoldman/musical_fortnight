@@ -1,3 +1,4 @@
+import 'package:aer_v2/src/application/services/authentication.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  final Authentication authentication = Authentication();
 
   bool _isHidden = true;
   bool showMessageError = false;
@@ -23,6 +25,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return _body();
+  }
+
+  Widget _body() {
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -122,10 +128,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       minimumSize: const Size.fromHeight(50)),
                   onPressed:
                       (_email.text.isNotEmpty && _password.text.isNotEmpty)
-                          ? () {
+                          ? () async {
                               if (_formKey.currentState!.validate()) {
-                                // ScaffoldMessenger.of(context).showSnackBar(
-                                //     const SnackBar(content: Text('Processing Data')));
+                                await authentication.signup(
+                                    _email.text.toString(),
+                                    _password.text.toString());
                               }
                             }
                           : null,

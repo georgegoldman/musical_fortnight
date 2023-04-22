@@ -1,3 +1,4 @@
+import 'package:aer_v2/src/application/services/authentication.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  final Authentication authentication = Authentication();
 
   bool _isHidden = true;
   bool showMessageError = false;
