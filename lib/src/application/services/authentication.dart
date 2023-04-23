@@ -1,22 +1,27 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: use_build_context_synchronously
 
-class Authentication {
-  Authentication();
+import 'package:aer_v2/src/presentation/widgets/snackbarNotifier.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+class Authentication with SnackbarNotification {
+  final BuildContext context;
+  Authentication({required this.context});
   FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<void> signup(email, password) async {
     try {
-      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      print(userCredential.user!.email);
+      await auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) {
+        normalNotification(
+            "user ${value.user!.email!.toString()} created successfully",
+            context);
+      }).whenComplete(() => Navigator.pushNamed(context, "/"));
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exist for that email');
-      }
+      normalNotification(e.message.toString(), context);
     } catch (e) {
-      print(e);
+      normalNotification(e.toString(), context);
     }
   }
 

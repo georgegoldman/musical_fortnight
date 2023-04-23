@@ -1,5 +1,6 @@
 import 'package:aer_v2/src/application/services/authentication.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -12,10 +13,21 @@ class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
-  final Authentication authentication = Authentication();
+  late final Authentication authentication;
 
   bool _isHidden = true;
   bool showMessageError = false;
+  bool _keyboardOpen = false;
+
+  @override
+  void initState() {
+    authentication = Authentication(context: context);
+    var keyboardVisibilityController = KeyboardVisibilityController();
+    keyboardVisibilityController.onChange.listen((bool visible) {
+      setState(() => _keyboardOpen = visible);
+    });
+    super.initState();
+  }
 
   void _togglePasswordView() {
     setState(() {
@@ -129,11 +141,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   onPressed:
                       (_email.text.isNotEmpty && _password.text.isNotEmpty)
                           ? () async {
-                              if (_formKey.currentState!.validate()) {
-                                await authentication.signup(
-                                    _email.text.toString(),
-                                    _password.text.toString());
-                              }
+                              authentication.signup(
+                                _email.text.toString(),
+                                _password.text.toString(),
+                              );
                             }
                           : null,
                   child: const Text(

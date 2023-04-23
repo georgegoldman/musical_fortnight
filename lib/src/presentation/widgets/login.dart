@@ -12,10 +12,16 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
-  final Authentication authentication = Authentication();
+  late final Authentication authentication;
 
   bool _isHidden = true;
   bool showMessageError = false;
+
+  @override
+  void initState() {
+    authentication = Authentication(context: context);
+    super.initState();
+  }
 
   void _togglePasswordView() {
     setState(() {
