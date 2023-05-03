@@ -4,20 +4,34 @@ import 'package:aer_v2/src/presentation/widgets/snackbarNotifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Authentication with SnackbarNotification {
+enum Status {
+  NotLoggedIn,
+  NotRegistered,
+  LoggedIn,
+  Registered,
+  Authenticating,
+  Registering,
+  LoggedOut
+}
+
+class Authentication with SnackbarNotification, ChangeNotifier {
   final BuildContext context;
   Authentication({required this.context});
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  Status _loggedInStatus = Status.NotLoggedIn;
+  Status _registeredInStatus = Status.NotRegistered;
+
+  Status get loggedInStatus => _loggedInStatus;
+  Status get registeredInStatus => _registeredInStatus;
+
   Future<void> signup(email, password) async {
     try {
-      await auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) {
-        normalNotification(
-            "user ${value.user!.email!.toString()} created successfully",
-            context);
-      }).whenComplete(() => Navigator.pushNamed(context, "/"));
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      print(userCredential.user);
     } on FirebaseAuthException catch (e) {
       normalNotification(e.message.toString(), context);
     } catch (e) {
@@ -27,16 +41,15 @@ class Authentication with SnackbarNotification {
 
   Future<void> login(email, password) async {
     try {
+      _loggedInStatus = Status.Authenticating;
+      notifyListeners();
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('wrong password provided for that user');
-      }
+      print("an error occured");
+      normalNotification(e.message.toString(), context);
     } catch (e) {
-      print(e.toString());
+      normalNotification(e.toString(), context);
     }
   }
 

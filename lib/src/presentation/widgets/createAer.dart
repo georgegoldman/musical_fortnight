@@ -3,6 +3,7 @@
 import 'package:aer_v2/src/application/services/trash.dart';
 import 'package:aer_v2/src/presentation/controllers/trash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/models/trash.dart';
@@ -60,8 +61,10 @@ class _CreateAerState extends State<CreateAer> {
                   onPressed: () {
                     TrashService().insert(Trash(
                             description: _description.text,
-                            disposer: "jknsu58789340%^%4skj")
+                            disposer: FirebaseAuth.instance.currentUser!.uid
+                                .toString())
                         .toFireStore());
+                    Navigator.of(context).pop();
                   },
                   child: const Text(
                     "Upload",

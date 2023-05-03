@@ -142,8 +142,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           _password.text.isNotEmpty &&
                           RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
                               .hasMatch(_email.text.toString()))
-                      ? () {
-                          print("loading");
+                      ? () async {
+                          authentication.login(_email.text.toString().trim(),
+                              _password.text.toString().trim());
                         }
                       : null,
                   child: const Text(

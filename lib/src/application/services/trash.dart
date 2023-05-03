@@ -1,5 +1,7 @@
 import 'package:aer_v2/src/domain/models/trash.dart';
 import 'package:aer_v2/src/presentation/controllers/trash.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
 class TrashService {
   final TrashController _trashController = TrashController();
