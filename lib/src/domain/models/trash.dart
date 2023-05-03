@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Trash {
   final String? description;
   final String? disposer;
-  final String? image;
+  final XFile? image;
 
   Trash({this.description, this.disposer, this.image});
 
