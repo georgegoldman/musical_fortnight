@@ -36,10 +36,10 @@ class Aer extends StatelessWidget {
           stream: auth.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const Home();
-            } else {
-              return const LoginScreen();
-            }
+                  return const Home();
+                } else {
+                  return const LoginScreen();
+                }
           },
         ),
         routes: <String, WidgetBuilder>{

@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:io';
+
 import 'package:aer_v2/src/application/services/trash.dart';
 import 'package:aer_v2/src/presentation/controllers/trash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -48,7 +50,7 @@ class _CreateAerState extends State<CreateAer> {
           const SizedBox(
             height: 15,
           ),
-          Text(_pickedFile?.name.toString() ?? ""),
+          _imageCard(),
           const SizedBox(
             height: 15,
           ),
@@ -125,6 +127,45 @@ class _CreateAerState extends State<CreateAer> {
       setState(() {
         _pickedFile = pickedFile;
       });
+    }
+  }
+
+  Widget _imageCard() {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Card(
+              elevation: 4.0,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: _image(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _image() {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    if (_pickedFile != null) {
+      final path = _pickedFile!.path;
+
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 0.8 * screenWidth,
+          maxHeight: 0.7 * screenHeight,
+        ),
+        child: Image.file(File(path)),
+      );
+    } else {
+      return const SizedBox.shrink();
     }
   }
 }

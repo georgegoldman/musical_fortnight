@@ -28,12 +28,14 @@ class NavAppBar extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               ListTile(
+                                onTap: () => print("object"),
+                                selectedTileColor: Colors.purpleAccent,
                                 leading: const CircleAvatar(
                                   backgroundImage: NetworkImage(
                                       "https://images.pexels.com/photos/15031661/pexels-photo-15031661.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"),
                                 ),
                                 title: Text(
-                                  "Hi ${FirebaseAuth.instance.currentUser!.email}",
+                                  "Hi ${FirebaseAuth.instance.currentUser?.email}",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),

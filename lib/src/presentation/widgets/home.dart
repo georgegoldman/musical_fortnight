@@ -1,4 +1,3 @@
-import 'package:aer_v2/src/application/services/authentication.dart';
 import 'package:aer_v2/src/presentation/widgets/bottomAppBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -103,11 +102,13 @@ class _HomeState extends State<Home> {
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
-                  return Text('Something went wrong');
+                  return const Text('Something went wrong');
                 }
 
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text("Loading");
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 }
 
                 return ListView(
@@ -118,7 +119,9 @@ class _HomeState extends State<Home> {
                         document.data()! as Map<String, dynamic>;
                     return ListTile(
                       title: Text(data['description']),
-                      subtitle: Text(data['disposer']),
+                      trailing: CircleAvatar(
+                        backgroundImage: NetworkImage(data['image']),
+                      ),
                     );
                   }).toList(),
                 );
