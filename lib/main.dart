@@ -1,5 +1,4 @@
 import 'package:aer_v2/src/application/services/authentication.dart';
-import 'package:aer_v2/src/data/DTOs/user_preference.dart';
 import 'package:aer_v2/src/presentation/widgets/createAer.dart';
 import 'package:aer_v2/src/presentation/widgets/home.dart';
 import 'package:aer_v2/src/presentation/widgets/login.dart';
@@ -24,7 +23,6 @@ class Aer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<String?> getUserData() => UserPreference().getUser();
     FirebaseAuth auth = FirebaseAuth.instance;
 
     return MultiProvider(
