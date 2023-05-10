@@ -3,6 +3,7 @@ import 'package:aer_v2/src/data/DTOs/user_preference.dart';
 import 'package:aer_v2/src/presentation/widgets/createAer.dart';
 import 'package:aer_v2/src/presentation/widgets/home.dart';
 import 'package:aer_v2/src/presentation/widgets/login.dart';
+import 'package:aer_v2/src/presentation/widgets/settings.dart';
 import 'package:aer_v2/src/presentation/widgets/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +37,10 @@ class Aer extends StatelessWidget {
           stream: auth.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-                  return const Home();
-                } else {
-                  return const LoginScreen();
-                }
+              return const Home();
+            } else {
+              return const LoginScreen();
+            }
           },
         ),
         routes: <String, WidgetBuilder>{
@@ -49,6 +50,9 @@ class Aer extends StatelessWidget {
           '/aer': (BuildContext context) {
             return const CreateAer();
           },
+          '/settings': (BuildContext context) {
+            return const Settings();
+          }
         },
         debugShowCheckedModeBanner: false,
       ),
