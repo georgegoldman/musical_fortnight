@@ -1,9 +1,10 @@
 import 'package:aer_v2/src/application/services/authentication.dart';
-import 'package:aer_v2/src/presentation/widgets/createAer.dart';
+import 'package:aer_v2/src/presentation/view/account.dart';
+import 'package:aer_v2/src/presentation/view/createAer.dart';
 import 'package:aer_v2/src/presentation/widgets/home.dart';
-import 'package:aer_v2/src/presentation/widgets/login.dart';
-import 'package:aer_v2/src/presentation/widgets/settings.dart';
-import 'package:aer_v2/src/presentation/widgets/signup.dart';
+import 'package:aer_v2/src/presentation/view/login.dart';
+import 'package:aer_v2/src/presentation/view/settings.dart';
+import 'package:aer_v2/src/presentation/view/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -50,6 +51,9 @@ class Aer extends StatelessWidget {
           },
           '/settings': (BuildContext context) {
             return const Settings();
+          },
+          '/account': (BuildContext context) {
+            return const Account();
           }
         },
         debugShowCheckedModeBanner: false,
