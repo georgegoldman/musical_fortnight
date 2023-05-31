@@ -1,7 +1,7 @@
 import 'package:aer_v2/src/application/services/authentication.dart';
 import 'package:aer_v2/src/presentation/view/account.dart';
 import 'package:aer_v2/src/presentation/view/createAer.dart';
-import 'package:aer_v2/src/presentation/widgets/home.dart';
+import 'package:aer_v2/src/presentation/view/home.dart';
 import 'package:aer_v2/src/presentation/view/login.dart';
 import 'package:aer_v2/src/presentation/view/settings.dart';
 import 'package:aer_v2/src/presentation/view/signup.dart';

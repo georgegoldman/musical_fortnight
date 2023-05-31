@@ -1,3 +1,4 @@
+import 'package:aer_v2/src/presentation/widgets/settings/settings_nav_btn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   bool _themeMode = false;
+
   final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(),
       body: SafeArea(
           child: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         children: [
          const Padding(padding: EdgeInsets.only(left: 18, bottom: 24), child: Text("Settings", style: TextStyle(
               fontSize: 24,
@@ -43,9 +45,7 @@ class _SettingsState extends State<Settings> {
                   "${user?.email}",
                 ),
                 subtitle: const Text("Profile info"),
-                trailing: IconButton(
-                    icon: const Icon(Icons.arrow_forward),
-                    onPressed: () => Navigator.pushNamed(context, "/account"),),
+                trailing: const SettingsNavBtn(destination: "account",),
               ),
             ],
           ),
@@ -60,56 +60,24 @@ class _SettingsState extends State<Settings> {
                   style: TextStyle(fontSize: 20,),
                 ),
               ),
-              ListTile(
-                leading:const Icon(Icons.language_outlined)
+              const ListTile(
+                leading:Icon(Icons.language_outlined)
                 ,
-                title: const Text(
+                title: Text(
                   "Language",
                 ),
-                subtitle: const Text("English", style: TextStyle(
+                subtitle: Text("English", style: TextStyle(
                   color: Colors.grey
                 )),
-                trailing: ConstrainedBox(
-                  constraints:
-                  const BoxConstraints.tightFor(height: 70, width: 45),
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(14)))),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, "/settings"),
-                      child: const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 15,
-                      )),
-                ),
+                trailing: SettingsNavBtn(destination: null,),
               ),
               const Divider(),
-              ListTile(
-                leading:  const Icon(Icons.notifications),
-                title: const Text(
+              const ListTile(
+                leading:  Icon(Icons.notifications),
+                title: Text(
                   "Notifications",
                 ),
-                trailing: ConstrainedBox(
-                  constraints:
-                  const BoxConstraints.tightFor(height: 70, width: 45),
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(14)))),
-                      onPressed: () =>
-                          print("hi"),
-                      child: const Center(child: Icon(
-                        Icons.arrow_forward_ios,
-                        size: 15,
-                      ))),
-                ),
+                trailing: SettingsNavBtn(destination: null,),
               ),
               const Divider(),
               ListTile(
@@ -118,9 +86,11 @@ class _SettingsState extends State<Settings> {
                   "Dark mode",
                 ),
                 subtitle: Text(_themeMode?"on":"off", style: const TextStyle(
-                    color: Colors.grey
+                    color: Colors.grey,
                 )),
                 trailing: Switch( value: _themeMode,
+                  activeColor: Colors.grey,
+                  inactiveTrackColor: Colors.white54,
                   onChanged: (bool newValue) {
                     setState(() {
                       _themeMode = newValue;
@@ -128,28 +98,12 @@ class _SettingsState extends State<Settings> {
                   },),
               ),
               const Divider(),
-              ListTile(
-                leading:  const Icon(Icons.help),
-                title: const Text(
+              const ListTile(
+                leading:  Icon(Icons.help),
+                title: Text(
                   "Help",
                 ),
-                trailing: ConstrainedBox(
-                  constraints:
-                  const BoxConstraints.tightFor(height: 70, width: 45),
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(14)))),
-                      onPressed: () =>
-                          print("hi"),
-                      child: const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 15,
-                      )),
-                ),
+                trailing: SettingsNavBtn(destination: null,),
               ),
               const Divider(),
             ],
