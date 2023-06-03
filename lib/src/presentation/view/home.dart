@@ -159,9 +159,9 @@ class _HomeState extends State<Home> {
                       endIndent: 0,
                       color: Colors.grey,
                     ),
-                    Expanded(
+                    const Expanded(
                         child: Column(
-                          children: const [
+                          children: [
                             Text(
                               "343",
                               style: TextStyle(fontSize: 25),
@@ -173,22 +173,7 @@ class _HomeState extends State<Home> {
                         ))
                   ],
                 ),
-                const SizedBox(
-                  height: 35,
-                ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              12), // <-- Radius
-                        ),
-                        backgroundColor: Colors.white,
-                        minimumSize: const Size.fromHeight(50)),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Authentication(context: context).signout();
-                    },
-                    child: const Text("Sign Out"))
+
               ],
             ),
           );

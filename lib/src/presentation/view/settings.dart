@@ -2,6 +2,8 @@ import 'package:aer_v2/src/presentation/widgets/settings/settings_nav_btn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../application/services/authentication.dart';
+
 class Settings extends StatefulWidget {
   const Settings({super.key});
 
@@ -106,6 +108,34 @@ class _SettingsState extends State<Settings> {
                 trailing: SettingsNavBtn(destination: null,),
               ),
               const Divider(),
+              const SizedBox(height: 15,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12), // <-- Radius
+                            ),
+                            backgroundColor: Colors.white,
+                            minimumSize: const Size.fromHeight(50)),
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                          Authentication(context: context).signout();
+                        },
+                        child: const Text(
+                          "Sign Out",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.black
+                          ),
+                        ))
+                  ],
+                ),
+              )
             ],
           )
         ],

@@ -71,4 +71,23 @@ class Authentication with SnackbarNotification, ChangeNotifier {
       }
     } catch (e) {}
   }
+
+  Future<String?> upatePhoto(filepath) async {
+    try {
+      return await auth.currentUser?.updatePhotoURL(filepath);
+    } catch (e) {
+
+    }
+  }
+
+  Future<void> update(displayName, newEmail, phoneCredential, photoURL) async {
+    try {
+
+      await auth.currentUser?.updateDisplayName(displayName);
+      await auth.currentUser?.updateEmail(newEmail);
+      await auth.currentUser?.updatePhoneNumber(phoneCredential);
+      await auth.currentUser?.updatePhotoURL(photoURL);
+    } catch (e){
+    }
+  }
 }
